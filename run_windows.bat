@@ -1,2 +1,5 @@
 @echo off
-cd modules && python webui.py
+
+set LAUNCH_ARGS=
+
+cd modules && python webui.py %LAUNCH_ARGS%
