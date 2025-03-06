@@ -1,8 +1,8 @@
+import argparse
 import json
 import gradio as gr
 from thema import ThemaManager
 from dataset import DatasetManager
-from chat_logic import respond
 from history import ChatHistory
 
 js_func = """
@@ -37,6 +37,11 @@ dataset_manager = DatasetManager()
 chat_history = ChatHistory()
 history = []
 
+def parse_args():
+    parser = argparse.ArgumentParser(description='Web UI Startup Arguments')
+    parser.add_argument('--api', action='store_true', default=False, help='Use API response handler')
+    return parser.parse_args()
+
 def handle_theme_selection(choice):
     thema_manager.set_thema(choice)
     print(f"selected theme: {thema_manager.thema}")
@@ -48,7 +53,7 @@ def custom_label():
 def handle_dataset_selection(choice):
     chat_history.clear()
     if thema_manager.thema in ["Thema 1", "Thema 2", "Thema 3"]:
-        with open(f".\\dataset\\{dataset_manager.dataset}.json", "r") as file:
+        with open(f"E:\\Pra\\dataset\\{dataset_manager.dataset}.json", "r") as file:
             dataset_data = json.load(file)
         if len(dataset_data) < 1:
             print("Error: Dataset is empty.")
@@ -127,9 +132,11 @@ def interface():
 
 
 if __name__ == "__main__":
+    args = parse_args()
+    if args.api:
+        from chat_logic_api import respond
+    else:
+        from chat_logic import respond
+
     demo = interface()
-    demo.launch(
-        #share=True,
-        #auth=[("test", "test")],
-        #pwa=True
-                )
+    demo.launch()
