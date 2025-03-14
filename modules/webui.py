@@ -53,7 +53,7 @@ def custom_label():
 def handle_dataset_selection(choice):
     chat_history.clear()
     if thema_manager.thema in ["Thema 1", "Thema 2", "Thema 3"]:
-        with open(f"E:\\Pra\\dataset\\{dataset_manager.dataset}.json", "r") as file:
+        with open(f".\\dataset\\{dataset_manager.dataset}.json", "r") as file:
             dataset_data = json.load(file)
         if len(dataset_data) < 1:
             print("Error: Dataset is empty.")
