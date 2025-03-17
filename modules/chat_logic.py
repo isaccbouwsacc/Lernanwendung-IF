@@ -1,18 +1,20 @@
-import llama_cpp as llama
+from openai import OpenAI
 
-path = r"C:\Users\miros\.cache\lm-studio\models\a\b\llama-3.2-3b-instruct-q8_0.gguf"
+# Initialize LM Studio client
+client = OpenAI(base_url="http://0.0.0.0:8000/v1", api_key="lm-studio")
+MODEL = "gemma-3-12b-it"
 
-model = llama.Llama(model_path=path, n_ctx=10000, gpu_layers=-1)
 
 def respond(history):
-    response = model.create_chat_completion(
+    response = client.chat.completions.create(
+        model=MODEL,
         messages=history,
         max_tokens=-1,
-        temperature=0.8,
+        temperature=0.5,
         top_k=40,
         repeat_penalty=1.1,
         top_p=0.95,
-        min_p=0.05,
+        min_p=0.05
     )
 
     answer = response['choices'][0]['message']['content']
