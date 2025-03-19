@@ -1,3 +1,4 @@
+::commands stummen
 @echo off
 ::venv aktivieren
 call .venv\Scripts\activate
