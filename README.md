@@ -70,7 +70,8 @@ python run_app.py
 ### Startbildschirm
 Bei dem Startbildschirm, also noch bevor die Applikation ausgeführt wird, werden einige Perefärenzen mit einem "Ja"(y) oder "Nein"(n) erfragt.
 
-#### Anmerkung: Der dark mode funktioniert nur local, kann aber mit einem manuellem Beifügen von "?__theme=dark" and das ende der public url aktiviert werden!
+#### Anmerkung:
+Der dark mode funktioniert nur lokal, kann aber mit einem manuellem Beifügen von "?__theme=dark" and das Ende der public URL aktiviert werden!
 
 ### Themenauswahl
 Nach dem Start der Anwendung wird eine Webui in Ihrem Standardbrowser geöffnet. Hier kann Folgendes auswählen werden:
