@@ -2,7 +2,7 @@ import argparse
 import json
 import os
 import gradio as gr
-from _func import *
+from _func import css_func
 from thema import ThemaManager
 from dataset import DatasetManager
 from history import ChatHistory
@@ -15,13 +15,20 @@ history = []
 current_question = None
 current_expected_answer = None
 
-
 def parse_args():
     parser = argparse.ArgumentParser(description='Web UI Startup Arguments')
     parser.add_argument('--api-key', nargs='?', const=True, default=False,
                         help='Use API response handler. Optionally provide an API key.')
     parser.add_argument('--api-endpoint', nargs='?', const=True, default="http://192.168.1.187:8080",
                         help='Use API response handler. Provide an IP address.')
+    parser.add_argument('--dark-mode', action='store_true',
+                        help='Launch the interface in dark mode.')
+    parser.add_argument('--share', action='store_true',
+                        help='Launch the interface with sharing enabled.')
+    parser.add_argument('--username', default=None,
+                        help='Username for authentication.')
+    parser.add_argument('--password', default=None,
+                        help='Password for authentication.')
     return parser.parse_args()
 
 
@@ -206,7 +213,7 @@ def get_available_datasets():
 
 
 def interface():
-    with gr.Blocks(css=css_func) as demo:
+    with gr.Blocks(css=css_func, js=js_func) as demo:
         demo.load(fn=None, inputs=None, outputs=None, js=js_func)
 
         # Get available datasets
@@ -214,7 +221,7 @@ def interface():
 
         # Initial theme selection screen
         with gr.Group() as theme_screen:
-            gr.Markdown("## Informatik -- Projektarbeit", elem_classes="topic-label")
+            gr.Markdown("## Lernanwendung IF", elem_classes="topic-label")
             with gr.Accordion("Automatentheorie", open=True, elem_classes="accordion"):
                 # Dynamically create accordions for each theme
                 theme_accordions = {}
@@ -441,18 +448,33 @@ def interface():
 
     return demo
 
+
 if __name__ == "__main__":
     args = parse_args()
+
     if args.api_key and args.api_endpoint:
         from chat_logic_api import respond
         import chat_logic_api
+
         chat_logic_api.API_KEY = args.api_key
         chat_logic_api.API_ENDPOINT = f"{args.api_endpoint}/v1/chat/completions"
     else:
         from chat_logic_local import respond
 
+    if args.dark_mode:
+        from _func import js_func
+    else:
+        js_func = ""  # Empty if not using dark mode
+
     demo = interface()
+
+    # Set up authentication if credentials are provided
+    auth = None
+    if args.username and args.password:
+        auth = (args.username, args.password)
+
     demo.launch(
-        #share=True,
-        #auth=("gog", "sigma")
+        inbrowser=True,
+        share=args.share,
+        auth=auth,
     )
