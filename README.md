@@ -1,4 +1,4 @@
-# Interaktives Lernquiz mit LLM-Integration
+# Dokumentation
 
 ## Inhaltsverzeichnis
 - [Übersicht](#übersicht)
@@ -88,7 +88,7 @@ Nach der Themenauswahl wird eine Frage angezeigt:
 
 ### Feedback erhalten
 Nach dem Absenden Ihrer Antwort:
-1. Das System bewertet Ihre Antwort mit Hilfe des LLM
+1. Das System bewertet Ihre Antwort mit Hilfe einer LLM
 2. Sie erhalten eine Punktzahl (0-10) und detailliertes Feedback
 3. Die erwartete Antwort wird angezeigt
 4. Sie können zur Themenauswahl zurückkehren, um weitere Fragen zu beantworten
