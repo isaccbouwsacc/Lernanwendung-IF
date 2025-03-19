@@ -1,11 +1,13 @@
 js_func = """
+/* dark mode */
 function refresh() {
     const url = new URL(window.location);
-    if (!document.documentElement.hasAttribute('__theme')) {
-        document.documentElement.setAttribute('__theme', 'dark');
+
+    if (url.searchParams.get('__theme') !== 'dark') {
+        url.searchParams.set('__theme', 'dark');
+        window.location.href = url.href;
     }
 }
-refresh();
 """
 
 css_func = """
