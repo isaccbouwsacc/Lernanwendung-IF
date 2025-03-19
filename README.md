@@ -11,7 +11,7 @@
 - [Fehlerbehebung](#fehlerbehebung)
 
 ## Übersicht
-Dieses Projekt ist ein interaktives Lernquiz-System, das Large Language Models (LLMs) zur Bewertung von Benutzerantworten nutzt. Das System bietet eine benutzerfreundliche Weboberfläche, in der Benutzer Themen auswählen, Fragen beantworten und automatisiertes Feedback erhalten können. Das System kann sowohl mit lokalen LLMs (über [LM Studio](https://lmstudio.ai/)) als auch mit Remote-APIs betrieben werden.
+Dieses Projekt ist ein interaktives Lernquiz-System, das Large Language Models (LLMs) zur Bewertung von Benutzerantworten nutzt. Das System bietet eine benutzerfreundliche Webui, in der Benutzer Themen auswählen, Fragen beantworten und automatisiertes Feedback erhalten können. Das System kann sowohl mit lokalen LLMs (über [LM Studio](https://lmstudio.ai/)) als auch mit Remote-APIs betrieben werden.
 
 ## Systemanforderungen
 - Windows-Betriebssystem
@@ -48,7 +48,7 @@ pip install -r requirements.txt
 ```
 
 Die requirements.txt enthält folgende Hauptabhängigkeiten:
-- [gradio](https://gradio.app/) (für die Weboberfläche)
+- [gradio](https://gradio.app/) (für die Webui)
 - [openai](https://github.com/openai/openai-python) (für die API-Kommunikation)
 - [flask](https://flask.palletsprojects.com/) (für den Proxy-Server)
 
@@ -76,7 +76,7 @@ Bei Auswahl des API-Modus können Sie:
 - Einen eigenen API-Schlüssel und Endpunkt angeben
 
 ### Themenauswahl
-Nach dem Start der Anwendung wird die Weboberfläche in Ihrem Standardbrowser geöffnet. Hier können Sie:
+Nach dem Start der Anwendung wird eine Webui in Ihrem Standardbrowser geöffnet. Hier können Sie:
 - Ein Hauptthema aus den verfügbaren Akkordeons auswählen
 - Ein Unterthema auswählen, falls verfügbar
 
@@ -97,7 +97,7 @@ Nach dem Absenden Ihrer Antwort:
 
 ### Hauptkomponenten
 - `run_app.py`: Haupteinstiegspunkt, der die Anwendung startet und den Modus (API/lokal) konfiguriert
-- `webui.py`: Implementiert die Gradio-Weboberfläche und die Quiz-Logik
+- `webui.py`: Implementiert die Gradio-Webui und die Quiz-Logik
 - `chat_logic_local.py`: Verarbeitet Anfragen im lokalen Modus über LM Studio
 - `chat_logic_api.py`: Verarbeitet Anfragen im API-Modus
 - `secure_proxy.py`: Implementiert einen sicheren Proxy für die API-Kommunikation
@@ -115,7 +115,7 @@ quiz-system/
 │   ├── chat_logic_api.py   # API-Modus Logik
 │   ├── chat_logic_local.py # Lokaler Modus Logik
 │   ├── secure_proxy.py     # Sicherer Proxy für API-Kommunikation
-│   └── webui.py            # Hauptweboberfläche
+│   └── webui.py            # Hauptwebui
 ├── venv/                   # Virtuelle Python-Umgebung (wird bei Installation erstellt)
 ├── installer.bat           # Installationsskript
 ├── requirements.txt        # Abhängigkeiten
@@ -126,7 +126,7 @@ quiz-system/
 ### Funktionsweise
 1. **Initialisierung**: `run_app.py` startet die Anwendung und fragt nach dem gewünschten Modus
 2. **Proxy (optional)**: Bei Verwendung des API-Modus kann ein sicherer Proxy gestartet werden
-3. **Weboberfläche**: `webui.py` erstellt die Benutzeroberfläche mit Gradio
+3. **Webui**: `webui.py` erstellt die Benutzeroberfläche mit Gradio
 4. **Themenauswahl**: Die verfügbaren Themen werden aus dem Dataset-Verzeichnis geladen
 5. **Fragestellung**: Nach Auswahl eines Themas wird eine Frage aus der entsprechenden JSON-Datei geladen
 6. **Antwortbewertung**: Die Benutzerantwort wird an das LLM gesendet, das eine Bewertung und Feedback zurückgibt
