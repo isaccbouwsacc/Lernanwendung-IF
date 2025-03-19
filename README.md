@@ -12,7 +12,7 @@
 
 ## Übersicht
 Dieses Projekt ist ein interaktives Lernquiz-System, das Large Language Models (LLMs) zur Bewertung von Benutzerantworten nutzt. Das System bietet eine benutzerfreundliche Webui, in der Benutzer Themen auswählen, Fragen beantworten und automatisiertes Feedback erhalten können. Das System kann sowohl mit lokalen LLMs (über [LM Studio](https://lmstudio.ai/)) als auch mit Remote-APIs betrieben werden.
-#### Anmerkung: LLMs können Fehler bei der Auswertugn machen.
+#### Anmerkung: LLMs können Fehler bei der Auswertugn machen!
 
 ## Systemanforderungen
 - Windows-Betriebssystem
@@ -69,7 +69,8 @@ python run_app.py
 
 ### Startbildschirm
 Bei dem Startbildschirm, also noch bevor die Applikation ausgeführt wird, werden einige Perefärenzen mit einem "Ja"(y) oder "Nein"(n) erfragt.
-#### Anmerkung: Der dark mode funktioniert nur local, kann aber mit einem manuellem Beifügen von "?__theme=dark" and das ende der public url aktiviert werden.
+
+#### Anmerkung: Der dark mode funktioniert nur local, kann aber mit einem manuellem Beifügen von "?__theme=dark" and das ende der public url aktiviert werden!
 
 ### Themenauswahl
 Nach dem Start der Anwendung wird eine Webui in Ihrem Standardbrowser geöffnet. Hier kann Folgendes auswählen werden:
