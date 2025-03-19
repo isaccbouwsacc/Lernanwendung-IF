@@ -2,7 +2,6 @@ import os
 import subprocess
 import sys
 import time
-import signal
 import re
 import requests
 
@@ -70,11 +69,29 @@ def main():
     # Get the virtual environment activation command
     if os.name == 'nt':  # Windows
         activate_cmd = ['.venv\\Scripts\\activate.bat']
-    else:  # Unix/Linux/Mac
-        activate_cmd = ['source', '.venv/bin/activate']
+    else:
+        quit()
 
     # Ask if user wants to use API mode
     use_api = input("Do you want to use API mode? (y/n) ").lower().startswith('y')
+
+    # Ask if user wants to use dark mode
+    use_dark_mode = input("Do you want to use dark mode? (y/n) ").lower().startswith('y')
+
+    # Ask if user wants to enable sharing
+    use_share = input("Do you want to enable sharing (public URL)? (y/n) ").lower().startswith('y')
+
+    # Ask if user wants to set up authentication
+    use_auth = input("Do you want to set up authentication? (y/n) ").lower().startswith('y')
+
+    username = None
+    password = None
+    if use_auth:
+        username = input("Enter username: ")
+        password = input("Enter password: ")
+        if not username or not password:
+            print("Username or password not provided. Authentication will be disabled.")
+            use_auth = False
 
     proxy_process = None
     launch_args = []
@@ -112,6 +129,21 @@ def main():
 
     if not use_api:
         print("Running in local mode without API.")
+
+    # Add dark mode flag if selected
+    if use_dark_mode:
+        launch_args.append('--dark-mode')
+        print("Dark mode enabled.")
+
+    # Add share flag if selected
+    if use_share:
+        launch_args.append('--share')
+        print("Sharing enabled. A public URL will be generated.")
+
+    # Add authentication if selected
+    if use_auth:
+        launch_args.extend(['--username', username, '--password', password])
+        print(f"Authentication enabled with username: {username}")
 
     # Launch the application
     print("Launching application...")
