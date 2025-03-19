@@ -11,14 +11,14 @@
 - [Fehlerbehebung](#fehlerbehebung)
 
 ## Übersicht
-Dieses Projekt ist ein interaktives Lernquiz-System, das Large Language Models (LLMs) zur Bewertung von Benutzerantworten nutzt. Das System bietet eine benutzerfreundliche Weboberfläche, in der Benutzer Themen auswählen, Fragen beantworten und automatisiertes Feedback erhalten können. Das System kann sowohl mit lokalen LLMs (über LM Studio) als auch mit Remote-APIs betrieben werden.
+Dieses Projekt ist ein interaktives Lernquiz-System, das Large Language Models (LLMs) zur Bewertung von Benutzerantworten nutzt. Das System bietet eine benutzerfreundliche Weboberfläche, in der Benutzer Themen auswählen, Fragen beantworten und automatisiertes Feedback erhalten können. Das System kann sowohl mit lokalen LLMs (über [LM Studio](https://lmstudio.ai/)) als auch mit Remote-APIs betrieben werden.
 
 ## Systemanforderungen
 - Windows-Betriebssystem
-- Python 3.8 oder höher
-- Git (für das Klonen des Repositories)
+- [Python](https://www.python.org/downloads/) 3.8 oder höher
+- [Git](https://git-scm.com/downloads) (für das Klonen des Repositories)
 - Internetverbindung (für die Installation von Abhängigkeiten)
-- Optional: LM Studio (für den lokalen Modus)
+- Optional: [LM Studio](https://lmstudio.ai/) (für den lokalen Modus)
 
 ## Installation
 
@@ -48,9 +48,9 @@ pip install -r requirements.txt
 ```
 
 Die requirements.txt enthält folgende Hauptabhängigkeiten:
-- gradio (für die Weboberfläche)
-- openai (für die API-Kommunikation)
-- flask (für den Proxy-Server)
+- [gradio](https://gradio.app/) (für die Weboberfläche)
+- [openai](https://github.com/openai/openai-python) (für die API-Kommunikation)
+- [flask](https://flask.palletsprojects.com/) (für den Proxy-Server)
 
 ## Programmstart
 
@@ -69,7 +69,7 @@ python run_app.py
 ### Startbildschirm
 Nach dem Start werden Sie gefragt, ob Sie den API-Modus verwenden möchten:
 - `y`: Verwendet eine externe API für die LLM-Anfragen
-- `n`: Verwendet den lokalen Modus (erfordert LM Studio)
+- `n`: Verwendet den lokalen Modus (erfordert [LM Studio](https://lmstudio.ai/))
 
 Bei Auswahl des API-Modus können Sie:
 - Den sicheren Proxy starten (empfohlen)
@@ -109,6 +109,9 @@ quiz-system/
 ├── dataset/                # Enthält JSON-Dateien mit Fragen und erwarteten Antworten
 ├── modules/                # Enthält die Hauptmodule der Anwendung
 │   ├── _func.py            # CSS und JavaScript für die UI
+│   ├── dataset.py          # Datensatz Klasse
+│   ├── thema.py            # Thema Klasse
+│   ├── history.py          # Konversationsverlauf Klasse (veraltet)
 │   ├── chat_logic_api.py   # API-Modus Logik
 │   ├── chat_logic_local.py # Lokaler Modus Logik
 │   ├── secure_proxy.py     # Sicherer Proxy für API-Kommunikation
