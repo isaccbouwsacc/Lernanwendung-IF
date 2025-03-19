@@ -1,7 +1,0 @@
-[
-    {
-        "type": "question",
-        "content": "Was ist 1 + 1?",
-        "expected_answer": "2"
-    }
-]
