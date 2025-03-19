@@ -29,7 +29,7 @@ cd quiz-system
 ```
 
 ### Automatische Installation
-Führen Sie die Installationsdatei aus, um die virtuelle Umgebung zu erstellen und alle Abhängigkeiten zu installieren:
+Installationsdatei ausführen, um die virtuelle Umgebung zu erstellen und alle Abhängigkeiten zu installieren:
 ```bash
 installer.bat
 ```
@@ -40,7 +40,7 @@ Diese Datei führt folgende Schritte aus:
 3. Installiert alle erforderlichen Pakete aus der requirements.txt
 
 ### Manuelle Installation (Alternative)
-Falls die automatische Installation nicht funktioniert, können Sie die Schritte manuell ausführen:
+Falls die automatische Installation nicht funktioniert, können manuelle Schritte ausgeführt werden:
 ```bash
 python -m venv venv
 call venv\Scripts\activate
@@ -55,10 +55,10 @@ Die requirements.txt enthält folgende Hauptabhängigkeiten:
 ## Programmstart
 
 ### Einfacher Start
-Doppelklicken Sie auf die Datei `run.vbs`, um das Programm zu starten. Dies öffnet ein Konsolenfenster und startet die Anwendung.
+Doppelklick auf die Datei `run.vbs`, um das Programm zu starten. Dies öffnet ein Konsolenfenster und startet die Anwendung.
 
 ### Manueller Start
-Alternativ können Sie die Anwendung auch manuell starten:
+Alternativ können die Anwendung auch manuell gestartet werden:
 ```bash
 call venv\Scripts\activate
 python run_app.py
@@ -67,17 +67,12 @@ python run_app.py
 ## Benutzung
 
 ### Startbildschirm
-Nach dem Start werden Sie gefragt, ob Sie den API-Modus verwenden möchten:
-- `y`: Verwendet eine externe API für die LLM-Anfragen
-- `n`: Verwendet den lokalen Modus (erfordert [LM Studio](https://lmstudio.ai/))
-
-Bei Auswahl des API-Modus können Sie:
-- Den sicheren Proxy starten (empfohlen)
-- Einen eigenen API-Schlüssel und Endpunkt angeben
+Bei dem Startbildschirm, also noch bevor die Applikation ausgeführt wird, werden einige Perefärenzen mit einem "Ja"(y) oder "Nein"(n) erfragt.
+//Notation: Der dark mode funktioniert nur local, kann aber mit einem manuellem Beifügen von "?__theme=dark" and das ende der public url aktiviert werden.
 
 ### Themenauswahl
-Nach dem Start der Anwendung wird eine Webui in Ihrem Standardbrowser geöffnet. Hier können Sie:
-- Ein Hauptthema aus den verfügbaren Akkordeons auswählen
+Nach dem Start der Anwendung wird eine Webui in Ihrem Standardbrowser geöffnet. Hier kann Folgendes auswählen werden:
+- Ein Hauptthema aus den verfügbaren "Akkordeons" auswählen
 - Ein Unterthema auswählen, falls verfügbar
 
 ### Fragen beantworten
