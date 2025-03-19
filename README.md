@@ -25,8 +25,8 @@ Dieses Projekt ist ein interaktives Lernquiz-System, das Large Language Models (
 
 ### Repository klonen
 ```bash
-git clone https://github.com/username/quiz-system.git
-cd quiz-system
+git clone https://github.com/username/gog.git
+cd gog
 ```
 
 ### Automatische Installation
