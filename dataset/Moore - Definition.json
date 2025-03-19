@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Was versteht man unter einem Moore-Automaten?",
+        "expected_answer": "Ein Moore-Automat ist ein Transduktor. Somit kann er Eingaben in Ausgaben übersetzen. Diese Ausgaben hängen beim Moore-Automaten nur vom aktuellen Zustand. Somit wird die Ausgabe beim Verweilen im Zustand generiert."
+    }
+]

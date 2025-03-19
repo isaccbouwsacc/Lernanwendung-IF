@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Welche Typen von Sprachen und Grammatiken gibt es (Chomsky-Hierarchie) und durch welche Automaten werden sie dargestellt?",
+        "expected_answer": "Es gibt vier Typen von Sprachen. Eine Sprache vom Typ 3 (oder regulär) wird durch eine reguläre Grammatik definiert und durch einen endlichen Automaten (z.B.: DEA, NEA) definiert. Eine Sprache vom Typ 2 (oder kontextfrei) wird durch eine kontextfreie Grammatik definiert und durch einen Kellerautomaten (PDA) definiert. Eine Sprache vom Typ 1 (oder kontextsensitiv) wird durch eine kontextsensitive Grammatik definiert und durch einen linear beschränkten Automaten definiert. Eine Sprache vom     Typ 0 (oder rekursiv aufzählbar) wird durch eine unbeschränkte Grammatik definiert und durch eine Turingmaschine definiert."
+    }
+]

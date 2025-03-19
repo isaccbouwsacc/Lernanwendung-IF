@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Gib eine Grammatik G an, die die formale Sprache L(G)={a^n b^2n ∣n>0} erzeugt.",
+        "expected_answer": "Das Tupel der Grammatik lautet: G = (N, T, P, S), mit N = { S }; T = { a, b }; P = { S -> aSbb, S -> abb }; S = S"
+    }
+]

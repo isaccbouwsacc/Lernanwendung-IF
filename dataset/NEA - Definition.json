@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Wofür steht NEA und was ist das?",
+        "expected_answer": "Ein NEA ist abgekürzt für nicht-deterministischer endlicher Automat. Ein NEA ist demnach ein Akzeptor, welcher überprüfen kann, ob eine Eingabe willkürlichen Anforderungen entspricht oder nicht. Er ist außerdem nicht-deterministisch, demnach sind nicht alle möglichen Eingaben für jeden Zustand definiert und es sind mehrere Zustandswechsel möglich, also sind die Wechsel nicht eindeutig."
+    }
+]

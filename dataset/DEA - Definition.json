@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Wofür steht DEA und was ist das?",
+        "expected_answer": "Ein DEA ist abgekürzt für deterministischer endlicher Automat. Ein DEA ist demnach ein Akzeptor, welcher überprüfen kann, ob eine Eingabe willkürlichen Anforderungen entspricht oder nicht. Er ist außerdem deterministisch, demnach sind alle möglichen Eingaben für jeden Zustand definiert."
+    }
+]

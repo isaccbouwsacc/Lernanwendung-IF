@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Was versteht man unter einem Mealy-Automaten?",
+        "expected_answer": "Ein Mealy-Automat ist ein Transduktor. Somit kann er Eingaben in Ausgaben übersetzen. Diese Ausgaben hängen beim Mealy-Automaten vom aktuellen Zustand sowie von der Eingabe ab. Somit wird die Ausgabe bei den Zustandsübergängen erzeugt."
+    }
+]

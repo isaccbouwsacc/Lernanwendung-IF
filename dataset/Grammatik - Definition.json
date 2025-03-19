@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Was ist eine Grammatik im Kontext der Automathentheorie?",
+        "expected_answer": "Eine Grammatik ist prinzipiell ein Regelwerk, welches beschreibt, wie Zeichenketten (Wörter, Sätze) einer Sprache syntaktisch korrekt gebildet werden können. Sie legt fest, welche Strukturen und Kombinationen von Symbolen zulässig sind."
+    }
+]

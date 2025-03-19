@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Was ist ein Wort im Kontext der Automatentheorie?",
+        "expected_answer": "Ein Wort ist eine endliche Folge von Symbolen aus dem Alphabet (Σ) (z. B. w=aabab)."
+    }
+]

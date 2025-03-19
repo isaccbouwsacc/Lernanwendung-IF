@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Entwerfe einen DEA, der alle Wörter über dem Alphabet Σ={a,b} akzeptiert, die mit mindestens zwei aufeinanderfolgenden a beginnen (z. B. aab, aaabba, aabab), aber keine drei aufeinanderfolgenden a enthalten (z. B. aabba wird akzeptiert, aaabba wird abgelehnt).\n(Hinweis! δ in der Form: d(Zustand,Eingabe)={Nächster Zustand} eingegeben)",
+        "expected_answer": "Das DEA-Tupel lautet: A = (Q, Sigma(groß), Delta(klein), q0, E), mit Q = { q0, q1, q2, q3, q4 }; Sigma(groß) = { a, b }; Delta(klein): d(q0, a) = q1, d(q0, b) = q0, d(q1, a) = q2, d(q1, b) = q0, d(q2, a) = q3, d(q2, b) = q4, d(q3, a) = q3, d(q3, b) = q3, d(q4, a) = q4, d(q4, b) = q4; q0 = q0; E = { q2, q4 }"
+    }
+]

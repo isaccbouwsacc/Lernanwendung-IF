@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Erstelle einen Kellerautomaten (PDA) für die Sprache L={a^n b^m ∣n>0,m>0, und m ist gerade}\n(Hinweis! δ in der Form: d(Zustand, Eingabe, Stack Top)={Nächster Zustand, neuer Stack Top} eingegeben)",
+        "expected_answer": "Das Tupel des Kellerautomaten lautet: A = (Q, Sigma(groß), Gamma(groß), Delta(klein), q0, Z0, E), mit Q = { q0, q1, q2, q3 }; Sigma(groß) = { a, b }; Gamma(groß) = { A, Z0 } Delta(klein): d(q0, a, Z0) = { q1, A }, d(q1, a, A) = { q1, A }, d(q1, b, A) = { q2, Epsilon(klein) }, d(q2, b, A) = { q2, Epsilon(klein) }, d(q2, b, Epsilon(klein)) = { q3, Epsilon(klein) }, d(q3, b, Epsilon(klein)) = { q2, Epsilon(klein) }; q0 = q0; Z0 = Z0; E = { q3 }"
+    }
+]

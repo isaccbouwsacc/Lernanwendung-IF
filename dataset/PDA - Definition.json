@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Was versteht man unter einem Kellerautomat bzw. PDA?",
+        "expected_answer": "Ein Kellerautomat bzw. PDA ist ein Akzeptor, welcher demnach überprüfen kann, ob eine Eingabe willkürlichen Anforderungen entspricht oder nicht. Zusätzlich verfügt ein Kellerautomat über einen Stack, also eine Art Ablage für bestimmte Eingaben. Für diesen Stack gilt das LiFo Prinzip: es kann immer nur etwas oben draufgelegt werden und auch wieder nur von oben entfernt werden."
+    }
+]

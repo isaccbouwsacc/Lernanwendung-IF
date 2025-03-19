@@ -1,0 +1,7 @@
+[
+    {
+        "type": "question",
+        "content": "Wie lautet das Tupel eines Kellerautomaten bzw. PDA und was bedeuten die einzelnen Elemente (griech. Buchstaben ausschreiben)?",
+        "expected_answer": "Ein Kellerautomat bzw. PDA verfügt über ein 7er Tupel. Dieses lautet A = (Q, Sigma(groß), Gamma(groß), Delta(klein), q0, Z0 ,E). Q steht für die endliche Menge aller Zustände, Sigma(groß) steht für das Eingabealphabet bzw. für die Menge der möglichen Eingaben, Gamma(groß) steht für das Stickalphabet, Delta(klein) steht für Zustandsüberführungsfunktion, q0 steht für den einzigen Startzustand, Z0 steht für das Anfangssymbol des Stacks, E steht für die Menge der Endzustände. Die Reihenfolge spielt grundsätzlich keine Rolle."
+    }
+]
