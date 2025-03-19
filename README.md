@@ -1,6 +1,7 @@
 # Dokumentation
 Interaktives Lernquiz mit LLM-Integration
-Inhaltsverzeichnis
+
+Inhaltsverzeichnis:
 Übersicht
 Systemanforderungen
 Installation
@@ -9,71 +10,58 @@ Benutzung
 Architektur und Funktionsweise
 Konfiguration
 Fehlerbehebung
-Übersicht
+
+Übersicht:
 Dieses Projekt ist ein interaktives Lernquiz-System, das Large Language Models (LLMs) zur Bewertung von Benutzerantworten nutzt. Das System bietet eine benutzerfreundliche Weboberfläche, in der Benutzer Themen auswählen, Fragen beantworten und automatisiertes Feedback erhalten können. Das System kann sowohl mit lokalen LLMs (über LM Studio) als auch mit Remote-APIs betrieben werden.
 
-Systemanforderungen
+Systemanforderungen:
 Windows-Betriebssystem
 Python 3.8 oder höher
 Git (für das Klonen des Repositories)
 Internetverbindung (für die Installation von Abhängigkeiten)
 Optional: LM Studio (für den lokalen Modus)
-Installation
+
+Installation:
 Repository klonen
+´´´
 git clone https://github.com/username/quiz-system.git
 cd quiz-system
-
-Copy
-
-Apply
-
-
-Automatische Installation
+´´´
+Automatische Installation:
 Führen Sie die Installationsdatei aus, um die virtuelle Umgebung zu erstellen und alle Abhängigkeiten zu installieren:
-
+´´´
 installer.bat
-
-Copy
-
-Apply
-
-
+´´´
 Diese Datei führt folgende Schritte aus:
 
 Erstellt eine virtuelle Python-Umgebung
 Aktiviert die virtuelle Umgebung
 Installiert alle erforderlichen Pakete aus der requirements.txt
 Manuelle Installation (Alternative)
-Falls die automatische Installation nicht funktioniert, können Sie die Schritte manuell ausführen:
 
+Falls die automatische Installation nicht funktioniert, können Sie die Schritte manuell ausführen:
+´´´
 python -m venv venv
 call venv\Scripts\activate
 pip install -r requirements.txt
-
-Copy
-
-Apply
-
+´´´
 
 Die requirements.txt enthält folgende Hauptabhängigkeiten:
 
 gradio (für die Weboberfläche)
 openai (für die API-Kommunikation)
 flask (für den Proxy-Server)
-Programmstart
-Einfacher Start
+
+Programmstart:
+Einfacher Start:
 Doppelklicken Sie auf die Datei run.vbs, um das Programm zu starten. Dies öffnet ein Konsolenfenster und startet die Anwendung.
 
 Manueller Start
 Alternativ können Sie die Anwendung auch manuell starten:
-
+´´´
 call venv\Scripts\activate
 python run_app.py
-
-Copy
-
-Apply
-
+´´´
 
 Benutzung
 Startbildschirm
@@ -112,6 +100,7 @@ chat_logic_api.py: Verarbeitet Anfragen im API-Modus
 secure_proxy.py: Implementiert einen sicheren Proxy für die API-Kommunikation
 _func.py: Enthält CSS- und JavaScript-Funktionen für die Benutzeroberfläche
 Dateistruktur
+´´´
 quiz-system/
 ├── dataset/                # Enthält JSON-Dateien mit Fragen und erwarteten Antworten
 ├── modules/                # Enthält die Hauptmodule der Anwendung
@@ -125,11 +114,7 @@ quiz-system/
 ├── requirements.txt        # Abhängigkeiten
 ├── run.vbs                 # Startskript
 └── run_app.py              # Hauptanwendungsstarter
-
-Copy
-
-Apply
-
+´´´
 
 Funktionsweise
 Initialisierung: run_app.py startet die Anwendung und fragt nach dem gewünschten Modus
@@ -153,10 +138,6 @@ Die JSON-Datei sollte folgendes Format haben:
     "expected_answer": "Hier steht die erwartete Antwort."
   }
 ]
-
-Copy
-
-Apply
 
 
 API-Konfiguration
