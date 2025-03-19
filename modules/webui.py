@@ -105,14 +105,14 @@ def evaluate_answer_with_llm(user_answer, expected_answer, question):
         {
             "role": "user",
             "content": f"Hier ist die Aufgabenstellung: {question}\n\n"
-                       f"Hier die erwartete Antwort: {expected_answer}\n\n"
-                       f"Und zuletzt die Benutzerantwort: {user_answer}\n\n"
+                       f"Hier ist der Erwartungshorizont bezüglich der Aufgabestellung: {expected_answer}\n\n"
+                       f"Und zuletzt die gelieferte Benutzerantwort die bewertet werden soll: {user_answer}\n\n"
                        +
                        (
                            f"Hinweis: Dies scheint eine sehr kurze oder minimale Benutzerantwort zu sein (zur Referenz lautet die zu bewertende Benutzerantwort: {user_answer}). Bewerte sie trotzdem im kompletten Umfang.\n\n" if is_minimal_answer else ""
                        )
                        +
-                       f"Bewerte diese Benutzerantwort auf einer Skala von 0 bis 10 und erkläre kurz, warum du diese Bewertung gibst. Beziehe dich dabei auf die erwartete Antwort und falls nötig auch weitere Randinformationen. Antworte IMMER im folgenden Format:\nPunkte: [0-10]\nBegründung: [Deine Begründung]"
+                       f"Bewerte diese Benutzerantwort auf einer Skala von 0 bis 10 und erkläre kurz, warum du diese Bewertung gibst. Beziehe dich dabei auf den Erwartungshorizont und falls nötig auch weitere Randinformationen. Antworte IMMER im folgenden Format:\nPunkte: [0-10]\nBegründung: [Deine Begründung]"
         }
     ]
 
