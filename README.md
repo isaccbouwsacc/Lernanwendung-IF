@@ -1,4 +1,4 @@
-# Lernanwendung IF
+# Dokumentation der Projektarbeit
 
 Eine interaktive Lernanwendung für automatisierte Bewertung von Fragestellungen in der Informatik.
 
