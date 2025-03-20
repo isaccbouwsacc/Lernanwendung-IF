@@ -15,11 +15,9 @@ Eine interaktive Lernanwendung für automatisierte Bewertung von Fragestellungen
 
 ## Übersicht
 
-Die Lernanwendung IF ist ein interaktives Lernwerkzeug, das entwickelt wurde, um Studierende bei der Vorbereitung auf Prüfungen im Bereich Informatik zu unterstützen. Die Anwendung stellt Fragen aus verschiedenen Themenbereichen, bewertet die eingegebenen Antworten automatisch mithilfe eines Sprachmodells und gibt detailliertes Feedback zur Qualität der Antwort.
+Dieses Projekt ist ein interaktives Lernwerkzeug, welches Fragen aus verschiedenen Themenbereichen stellt und im Anschluss die eingegebenen Antworten automatisch mithilfe eines Sprachmodells bewertet. Zusätzlich zu der Bewertung wird detailliertes Feedback zur Qualität der Antwort, ebenfalls vom Sprachmodell, bereitgestellt. Des Weiteren bietet dieses System eine benutzerfreundliche Weboberfläche, in der Themen und Unterthemen ausgewählt werden können.
 
-Das System bietet eine benutzerfreundliche Weboberfläche, in der Themen und Unterthemen ausgewählt werden können. Die Bewertung erfolgt auf einer Skala von 0 bis 10 Punkten mit ausführlicher Begründung, wodurch ein effektives Selbststudium ermöglicht wird.
-
-#### Anmerkung: LLMs können Fehler machen!
+#### Anmerkung: LLMs (Sprachmodelle) können Fehler machen!
 
 ## Systemanforderungen
 
