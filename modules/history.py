@@ -1,3 +1,4 @@
+#veraltet
 class ChatHistory:
     def __init__(self):
         self.messages = []
