@@ -1,7 +1,7 @@
 [
     {
         "type": "question",
-        "content": "Was ist ein Alphabet im Kontext der Automatentheorie?",
+        "content": "Was ist ein Alphabet im Kontext der Automatentheorie? (mit Beispiel)",
         "expected_answer": "Ein Alphabet ist eine endliche Menge von Symbolen (z.B.: Σ={a,b})."
     }
 ]
