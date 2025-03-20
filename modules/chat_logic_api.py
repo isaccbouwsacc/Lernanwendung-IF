@@ -1,5 +1,4 @@
 import requests
-import os
 
 # Define global variables that can be set from outside
 API_KEY = ""
