@@ -21,6 +21,7 @@ Dieses Projekt ist ein interaktives Lernwerkzeug, welches Fragen aus verschieden
 ## Systemanforderungen
 
 - [Python 3.8+](https://www.python.org/downloads/) oder höher
+- [Git](https://git-scm.com/downloads) (für das Klonen des Repositories)
 - Windows-Betriebssystem (für die Batch- und VBS-Skripte)
 - Mindestens 4GB RAM (Modelabhängig) für die lokale Ausführung
 - Internetverbindung für die API-Nutzung
@@ -59,7 +60,7 @@ run.vbs
 ```
 Dieses Skript startet die Anwendung und erfragt nach den Startoptionen (y/n).
 
-2. **Manueller Start mit mehr Optionen:**
+2. **Manueller Start mit Optionen:**
 ```
 venv_cmd.bat
 python modules\webui.py [OPTIONEN]
@@ -75,10 +76,11 @@ python modules\webui.py [OPTIONEN]
 
 ### Proxy-Server
 
-Für die sichere Kommunikation mit einem lokalen LLM kann der Proxy-Server verwendet werden:
+Für eine gesicherte Verbidung zwischen Host und Client kann `run_proxy.vbs` ausgeührt werden.
 ```
 run_proxy.vbs
 ```
+Dieses Skript startet einen Proxy-Server, der durch ngrok einer öffentliche URL zugewiesen bekommt und so nicht nur auf lokaler Ebene benutzt werden kann.
 
 ## Funktionsweise
 
@@ -86,10 +88,10 @@ run_proxy.vbs
 
 - `webui.py`: Hauptmodul für die Weboberfläche und Anwendungslogik
 - `chat_logic_api.py` / `chat_logic_local.py`: Verantwortlich für die Kommunikation mit dem Sprachmodell
-- `secure_proxy.py`: Stellt eine sichere Verbindung zu lokalen Sprachmodellen her
-- `history.py`: Verwaltet den Gesprächsverlauf
+- `secure_proxy.py`: Stellt eine gesicherte Verbindung her
+- `history.py`: Verwaltet den Gesprächsverlauf (veraltet)
 - `thema.py` / `dataset.py`: Verwalten Themen und Datensätze
-- `_func.py`: Enthält CSS-Funktionen für die Benutzeroberfläche
+- `_func.py`: Enthält CSS-Funktionen für den Style der Benutzeroberfläche
 
 ### Datenstruktur
 Lernanwendung-IF/
@@ -142,15 +144,6 @@ Themen werden durch die Dateinamen der JSON-Dateien definiert:
 - Hauptthema: `Thema.json`
 - Unterthema: `Thema - Unterthema.json`
 
-### API-Einstellungen
-
-Für die Nutzung externer API-Dienste können die Parameter in `chat_logic_api.py` angepasst werden:
-
-```python
-API_KEY = "dein-api-key"
-API_ENDPOINT = "https://api.example.com/v1/chat/completions"
-```
-
 ## Erweiterungsmöglichkeiten
 
 ### Neue Themen hinzufügen
@@ -161,7 +154,7 @@ API_ENDPOINT = "https://api.example.com/v1/chat/completions"
 
 ### Integration weiterer Sprachmodelle
 
-Für die Integration neuer Sprachmodelle kann `chat_logic_local.py` angepasst werden:
+Für die Integration neuer Sprachmodelle kann `chat_logic_local.py` oder auch in LM Studio angepasst werden:
 
 ```python
 MODEL = "neues-modell-name"
@@ -169,14 +162,14 @@ MODEL = "neues-modell-name"
 
 ### Benutzeroberfläche anpassen
 
-Das Erscheinungsbild kann durch Änderung der CSS-Definitionen in `_func.py` angepasst werden.
+Das Erscheinungsbild der Applikation kann durch Änderung der CSS-Definitionen in `_func.py` angepasst werden.
 
 ## Debugging
 
 ### Bekannte Probleme
 
 - Bei Verbindungsproblemen zum Sprachmodell sollte überprüft werden, ob LM Studio korrekt konfiguriert ist und auf Port 1234 läuft
-- Bei API-Verbindungsproblemen sollten API-Schlüssel und Endpunkt überprüft werden
+- Bei API-Verbindungsproblemen sollten eingegebene API-Schlüssel und API-Endpunkt überprüft werden
 
 ### Fehlerbehebung
 
@@ -196,4 +189,4 @@ curl http://127.0.0.1:1234/v1/models
 
 ### Logging
 
-Die Anwendung gibt detaillierte Informationen zur Laufzeit in der Konsole aus, die für die Diagnose von Problemen hilfreich sein können.
+Die Anwendung gibt Informationen zur Laufzeit in der Konsole aus, die für die Diagnose von Problemen hilfreich sein können.
