@@ -19,10 +19,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Web UI Startup Arguments')
     parser.add_argument('--api-key', nargs='?', const=True, default=False,
                         help='Use API response handler. Optionally provide an API key.')
-    parser.add_argument('--api-endpoint', nargs='?', const=True, default="http://192.168.1.187:8080",
+    parser.add_argument('--api-endpoint', nargs='?', const=True, default=False,
                         help='Use API response handler. Provide an IP address.')
-    parser.add_argument('--dark-mode', action='store_true',
-                        help='Launch the interface in dark mode.')
     parser.add_argument('--share', action='store_true',
                         help='Launch the interface with sharing enabled.')
     parser.add_argument('--username', default=None,
@@ -46,7 +44,7 @@ def handle_theme_selection(theme, subtopic=None):
     return dataset_name
 
 
-def custom_label():
+def custom_label(): #deprecated, was used to test thema loader
     return thema_manager.thema if thema_manager.thema in ["Thema 1", "Thema 2", "Thema 3"] else "gog"
 
 
@@ -164,13 +162,13 @@ def get_score_bar_color(score):
             score = int(score)
         except ValueError:
             # If conversion fails, default to a middle score
-            return "#37134A"  # Amber for unknown scores
+            return "#37134A"  # Yellow for unknown scores
 
     # Now compare with integers
     if score <= 3:
         return "#FF5252"  # Red for low scores
     elif score <= 6:
-        return "#FFC107"  # Amber for medium scores
+        return "#FFC107"  # Yellow for medium scores
     elif score <= 8:
         return "#4CAF50"  # Green for good scores
     else:
@@ -213,8 +211,8 @@ def get_available_datasets():
 
 
 def interface():
-    with gr.Blocks(css=css_func, js=js_func) as demo:
-        demo.load(fn=None, inputs=None, outputs=None, js=js_func)
+    with gr.Blocks(css=css_func) as demo:
+        demo.load(fn=None, inputs=None, outputs=None)
 
         # Get available datasets
         available_datasets = get_available_datasets()
@@ -460,11 +458,6 @@ if __name__ == "__main__":
         chat_logic_api.API_ENDPOINT = f"{args.api_endpoint}/v1/chat/completions"
     else:
         from chat_logic_local import respond
-
-    if args.dark_mode:
-        from _func import js_func
-    else:
-        js_func = ""  # Empty if not using dark mode
 
     demo = interface()
 
