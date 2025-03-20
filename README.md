@@ -108,6 +108,7 @@ Lernanwendung-IF/
  │   ├── secure_proxy.py     # Sicherer Proxy für API-Kommunikation
  │   └── webui.py            # Hauptwebui
  ├── installer.bat           # Installationsskript
+ ├── README.md               # Anweisungsdatei
  ├── requirements.txt        # Abhängigkeiten
  ├── run.vbs                 # Startskript
  ├── run_app.py              # Hauptanwendungsstarter
