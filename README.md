@@ -122,7 +122,7 @@ Lernanwendung-IF/
  ├── requirements.txt        # Abhängigkeiten
  ├── run.vbs                 # Startskript
  ├── run_app.py              # Hauptanwendungsstarter
- ├── run_proxy.vbs           # Proxystarter (falls nicht die ganze Anwendung ausgeführt werden kann)
+ ├── run_proxy.vbs           # Proxystarter (falls nicht die ganze Anwendung ausgeführt werden kann, bzw. zum Hosten)
  └── venv_cmd.bat            # Shortcut für cmd in der virtuellen Python-Umgebung
  ```
 
@@ -209,4 +209,4 @@ curl http://127.0.0.1:1234/v1/models
 
 ### Logging
 
-Die Anwendung gibt Informationen zur Laufzeit in der Konsole aus, die für die Diagnose von Problemen hilfreich sein können.
+Die Anwendung sollte Informationen zur Laufzeit in der Konsole ausgebe, diese sind zumeist für die Diagnose von Problemen hilfreich.
