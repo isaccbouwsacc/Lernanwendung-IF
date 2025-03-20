@@ -94,6 +94,7 @@ Dieses Skript startet einen Proxy-Server, der durch ngrok einer öffentliche URL
 - `_func.py`: Enthält CSS-Funktionen für den Style der Benutzeroberfläche
 
 ### Datenstruktur
+```
 Lernanwendung-IF/
  ├── .venv/                  # Virtuelle Python-Umgebung (wird bei Installation erstellt)
  ├── dataset/                # Enthält JSON-Dateien mit Fragen und erwarteten Antworten
