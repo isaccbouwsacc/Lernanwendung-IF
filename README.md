@@ -54,7 +54,7 @@ Dieses Skript erstellt eine virtuelle Python-Umgebung und installiert alle erfor
 
 Die Anwendung kann auf zwei Arten gestartet werden:
 
-1. **Einfache Ausführung mit VBS-Skript:**
+1. **Einfache Ausführung mit VBS-Skript (empfohlen):**
 ```
 run.vbs
 ```
