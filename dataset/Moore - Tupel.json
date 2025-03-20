@@ -2,6 +2,6 @@
     {
         "type": "question",
         "content": "Wie lautet das Tupel eines Moore-Automaten und was bedeuten die einzelnen Elemente(griech. Buchstaben ausschreiben)?",
-        "expected_answer": "Ein Moore-Automat verfügt über ein 6er Tupel. Dieses lautet A = (Q, Sigma(groß), Delta(groß), Delta(klein), lambda(klein), q0). Q steht für die Menge aller Zustände, Sigma(groß) steht für das Eingabealphabet bzw. für die Menge der möglichen eingaben, Delta(groß) steht für Ausgabealphabet bzw. für die Menge alles möglichen Ausgaben, Delta(klein) steht für Zustandsüberführungsfunktion, Lambda(klein) steht für die Ausgabefunktion, q0 steht für den einzige Startzustand. Die Reihenfolge spielt grundsätzlich keine Rolle."
+        "expected_answer": "Ein Moore-Automat verfügt über ein 6er Tupel. Dieses lautet A = (Q, Sigma(groß), Delta(groß), Delta(klein), lambda(klein), q0). Q steht für die Menge aller Zustände, Sigma(groß) steht für das Eingabealphabet bzw. für die Menge der möglichen eingaben, Delta(groß) steht für Ausgabealphabet bzw. für die Menge alles möglichen Ausgaben, Delta(klein) steht für Zustandsüberführungsfunktion, lambda(klein) steht für die Ausgabefunktion, q0 steht für den einzigen Startzustand. Die Reihenfolge spielt grundsätzlich keine Rolle."
     }
 ]
