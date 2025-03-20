@@ -1,6 +1,6 @@
 # Dokumentation der Projektarbeit
 
-Eine interaktive Lernanwendung für automatisierte Bewertung von Antworten zu bestimmeten Fragestellungen.
+Eine interaktive Lernanwendung für automatisierte Bewertung von Antworten zu bestimmten Fragestellungen.
 
 ## Inhaltsverzeichnis
 - [Übersicht](#übersicht)
@@ -73,6 +73,14 @@ python modules\webui.py [OPTIONEN]
 - `--share`: Aktiviert die öffentliche Freigabe der Anwendung über eine temporäre URL
 - `--username [NAME]`: Legt einen Benutzernamen für die Authentifizierung fest
 - `--password [PASSWORT]`: Legt ein Passwort für die Authentifizierung fest
+
+### Modi für das Sprachmodell
+
+#### Lokaler Modus
+Im lokalen Modus kommuniziert die Anwendung direkt mit einem lokal ausgeführten Sprachmodell, wie z.B. über [LM Studio](https://lmstudio.ai/). Hierfür muss LM Studio auf dem lokalen Rechner gestartet sein und auf Port 1234 hören.
+
+#### API-Modus
+Der API-Modus stellt **keine** eigenen Sprachmodelle bereit, sondern ermöglicht lediglich die Kommunikation mit einem externen Netzwerk. Kann also als Host/Client system verwendet werden, ähnlich wie: ´share=True´ von gradio.
 
 ### Proxy-Server
 
