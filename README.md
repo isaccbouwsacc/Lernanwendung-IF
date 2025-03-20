@@ -85,7 +85,7 @@ Nach der Themenauswahl wird eine Frage angezeigt:
 3. Klicken Sie auf "Antwort abgeben"
 
 ### Feedback erhalten
-Nach dem Absenden Ihrer Antwort:
+Nach dem Absenden der Antwort:
 1. Das System bewertet Ihre Antwort mit Hilfe einer LLM
 2. Sie erhalten eine Punktzahl (0-10) und detailliertes Feedback
 3. Die erwartete Antwort wird angezeigt
@@ -94,7 +94,7 @@ Nach dem Absenden Ihrer Antwort:
 ## Architektur und Funktionsweise
 
 ### Hauptkomponenten
-- `run_app.py`: Haupteinstiegspunkt, der die Anwendung startet und den Modus (API/lokal) konfiguriert
+- `run_app.py`: Haupteinstiegspunkt, der die Anwendung startet und konfiguriert
 - `webui.py`: Implementiert die Gradio-Webui und die Quiz-Logik
 - `chat_logic_local.py`: Verarbeitet Anfragen im lokalen Modus über LM Studio
 - `chat_logic_api.py`: Verarbeitet Anfragen im API-Modus
@@ -149,10 +149,8 @@ Neue Fragen können als JSON-Dateien im `dataset/`-Verzeichnis hinzugefügt werd
 ```
 
 ### API-Konfiguration
-Für die Verwendung mit einer externen API:
-1. Wählen Sie beim Start `y` für den API-Modus
-2. Geben Sie Ihren API-Schlüssel und den Endpunkt ein
-3. Alternativ können Sie den sicheren Proxy verwenden, der automatisch konfiguriert wird
+```bash
+```
 
 ## Fehlerbehebung
 
