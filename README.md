@@ -16,7 +16,9 @@ Eine interaktive Lernanwendung für automatisierte Bewertung von Antworten zu be
 
 Dieses Projekt ist ein interaktives Lernwerkzeug, welches Fragen aus verschiedenen Themenbereichen stellt und im Anschluss die eingegebenen Antworten automatisch mithilfe eines Sprachmodells bewertet. Zusätzlich zu der Bewertung wird detailliertes Feedback zur Qualität der Antwort, ebenfalls vom Sprachmodell, bereitgestellt. Des Weiteren bietet dieses System eine benutzerfreundliche Web-Ui, in der Themen und Unterthemen ausgewählt werden können.
 
-#### Anmerkung: LLMs (Sprachmodelle) können Fehler machen, insbesondere kleinere, lokal ausführbare Modelle!                 (<20B Parameter und eventuell auch abhängig von bpw (Bits Per Weight) und Floating Point Precision Types, die zum Laden verwendet werden)
+#### Anmerkung: 
+#### LLMs (Sprachmodelle) können Fehler machen, insbesondere kleinere, lokal ausführbare Modelle!                 
+#### (<20B Parameter und eventuell auch abhängig von bpw (Bits Per Weight) und Floating Point Precision Types, die zum Laden verwendet werden)
 
 ## Systemanforderungen
 
@@ -90,7 +92,8 @@ Secure Proxy sorgt für eine gesicherte Verbindung zwischen Host und Client und 
 run_proxy.vbs
 ```
 
-#### Anmerkung: Der ngrok-Authtoken im Proxy-Code sollte vor der Verwendung im produktiven Umfeld durch Ihren eigenen ersetzt werden.
+#### Anmerkung: 
+#### Der ngrok-Authtoken im Proxy-Code sollte vor der Verwendung im produktiven Umfeld durch Ihren eigenen ersetzt werden.
 
 ## Funktionsweise
 
