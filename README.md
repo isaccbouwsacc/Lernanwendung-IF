@@ -1,167 +1,195 @@
-# Dokumentation
+# Lernanwendung IF
+
+Eine interaktive Lernanwendung für automatisierte Bewertung von Fragestellungen in der Informatik.
 
 ## Inhaltsverzeichnis
 - [Übersicht](#übersicht)
 - [Systemanforderungen](#systemanforderungen)
 - [Installation](#installation)
-- [Programmstart](#programmstart)
-- [Benutzung](#benutzung)
-- [Architektur und Funktionsweise](#architektur-und-funktionsweise)
+- [Verwendung](#verwendung)
+- [Funktionsweise](#funktionsweise)
 - [Konfiguration](#konfiguration)
-- [Fehlerbehebung](#fehlerbehebung)
+- [Erweiterungsmöglichkeiten](#erweiterungsmöglichkeiten)
+- [Debugging](#debugging)
+- [Lizenz](#lizenz)
 
 ## Übersicht
-Dieses Projekt ist ein interaktives Lernquiz-System, das Large Language Models (LLMs) zur Bewertung von Benutzerantworten nutzt. Das System bietet eine benutzerfreundliche Webui, in der Benutzer Themen auswählen, Fragen beantworten und automatisiertes Feedback erhalten können. Das System kann sowohl mit lokalen LLMs (über [LM Studio](https://lmstudio.ai/)) als auch mit Remote-APIs betrieben werden.
-#### Anmerkung: LLMs können Fehler bei der Auswertugn machen!
+
+Die Lernanwendung IF ist ein interaktives Lernwerkzeug, das entwickelt wurde, um Studierende bei der Vorbereitung auf Prüfungen im Bereich Informatik zu unterstützen. Die Anwendung stellt Fragen aus verschiedenen Themenbereichen, bewertet die eingegebenen Antworten automatisch mithilfe eines Sprachmodells und gibt detailliertes Feedback zur Qualität der Antwort.
+
+Das System bietet eine benutzerfreundliche Weboberfläche, in der Themen und Unterthemen ausgewählt werden können. Die Bewertung erfolgt auf einer Skala von 0 bis 10 Punkten mit ausführlicher Begründung, wodurch ein effektives Selbststudium ermöglicht wird.
+
+#### Anmerkung: LLMs können Fehler machen!
 
 ## Systemanforderungen
-- Windows-Betriebssystem
-- [Python](https://www.python.org/downloads/) 3.8 oder höher
-- [Git](https://git-scm.com/downloads) (für das Klonen des Repositories)
-- Internetverbindung (für die Installation von Abhängigkeiten)
-- Optional: [LM Studio](https://lmstudio.ai/) (für den lokalen Modus)
+
+- [Python 3.8+](https://www.python.org/downloads/) oder höher
+- Windows-Betriebssystem (für die Batch- und VBS-Skripte)
+- Mindestens 4GB RAM für die lokale Ausführung
+- Internetverbindung für die API-Nutzung
+- [LM Studio](https://lmstudio.ai/) für die lokale Ausführung von Sprachmodellen
+
+### Python-Abhängigkeiten
+- [Gradio](https://gradio.app/) - für die Weboberfläche
+- [OpenAI API](https://github.com/openai/openai-python) - für die Kommunikation mit dem Sprachmodell
+- [Flask](https://flask.palletsprojects.com/) - für den Proxy-Server
+- [pyngrok](https://pyngrok.readthedocs.io/) - für den externen Zugriff
 
 ## Installation
 
-### Repository klonen
+1. Repository klonen:
 ```bash
 git clone https://github.com/isaccbouwsacc/Lernanwendung-IF.git
 cd Lernanwendung-IF
 ```
 
-### Automatische Installation
-Installationsdatei ausführen, um die virtuelle Umgebung zu erstellen und alle Abhängigkeiten zu installieren:
+2. Installation der Abhängigkeiten mithilfe des Installationsskripts:
 ```bash
 installer.bat
 ```
 
-Diese Datei führt folgende Schritte aus:
-1. Erstellt eine virtuelle Python-Umgebung
-2. Aktiviert die virtuelle Umgebung
-3. Installiert alle erforderlichen Pakete aus der requirements.txt
+Dieses Skript erstellt eine virtuelle Python-Umgebung und installiert alle erforderlichen Pakete aus der `requirements.txt` Datei.
 
-### Manuelle Installation (Alternative)
-Falls die automatische Installation nicht funktioniert, können manuelle Schritte ausgeführt werden:
-```bash
-python -m venv venv
-call venv\Scripts\activate
-pip install -r requirements.txt
+## Verwendung
+
+### Starten der Anwendung
+
+Die Anwendung kann auf zwei Arten gestartet werden:
+
+1. **Einfache Ausführung mit VBS-Skript:**
+```
+run.vbs
+```
+Dieses Skript startet die Anwendung mit Standardeinstellungen.
+
+2. **Manueller Start mit mehr Optionen:**
+```
+venv_cmd.bat
+python modules\webui.py [OPTIONEN]
 ```
 
-Die requirements.txt enthält folgende Hauptabhängigkeiten:
-- [gradio](https://gradio.app/) (für die Webui)
-- [openai](https://github.com/openai/openai-python) (für die API-Kommunikation)
-- [flask](https://flask.palletsprojects.com/) (für den Proxy-Server)
+### Verfügbare Startoptionen
 
-## Programmstart
+- `--api-key [KEY]`: Nutzt die API-Schnittstelle mit dem angegebenen Schlüssel
+- `--api-endpoint [URL]`: Definiert den API-Endpunkt
+- `--share`: Aktiviert die öffentliche Freigabe der Anwendung über eine temporäre URL
+- `--username [NAME]`: Legt einen Benutzernamen für die Authentifizierung fest
+- `--password [PASSWORT]`: Legt ein Passwort für die Authentifizierung fest
 
-### Einfacher Start
-Doppelklick auf die Datei `run.vbs`, um das Programm zu starten. Dies öffnet ein Konsolenfenster und startet die Anwendung.
+### Proxy-Server
 
-### Manueller Start
-Alternativ können die Anwendung auch manuell gestartet werden:
-```bash
-call venv\Scripts\activate
-python run_app.py
+Für die sichere Kommunikation mit einem lokalen LLM kann der Proxy-Server verwendet werden:
+```
+run_proxy.vbs
 ```
 
-## Benutzung
+## Funktionsweise
 
-### Startbildschirm
-Bei dem Startbildschirm, also noch bevor die Applikation ausgeführt wird, werden einige Perefärenzen mit einem "Ja"(y) oder "Nein"(n) erfragt.
+### Komponenten
 
-#### Anmerkung:
-Der dark mode funktioniert nur lokal, kann aber mit einem manuellem Beifügen von "?__theme=dark" and das Ende der public URL aktiviert werden!
+- `webui.py`: Hauptmodul für die Weboberfläche und Anwendungslogik
+- `chat_logic_api.py` / `chat_logic_local.py`: Verantwortlich für die Kommunikation mit dem Sprachmodell
+- `secure_proxy.py`: Stellt eine sichere Verbindung zu lokalen Sprachmodellen her
+- `history.py`: Verwaltet den Gesprächsverlauf
+- `thema.py` / `dataset.py`: Verwalten Themen und Datensätze
+- `_func.py`: Enthält CSS-Funktionen für die Benutzeroberfläche
 
-### Themenauswahl
-Nach dem Start der Anwendung wird eine Webui in Ihrem Standardbrowser geöffnet. Hier kann Folgendes auswählen werden:
-- Ein Hauptthema aus den verfügbaren "Akkordeons" auswählen
-- Ein Unterthema auswählen, falls verfügbar
+### Datenstruktur
 
-### Fragen beantworten
-Nach der Themenauswahl wird eine Frage angezeigt:
-1. Lesen Sie die Frage sorgfältig
-2. Geben Sie Ihre Antwort in das Textfeld ein
-3. Klicken Sie auf "Antwort abgeben"
+- `modules/`: Enthält alle Python-Module
+- `dataset/`: Beinhaltet die Fragenkataloge im JSON-Format
+- `.venv/`: Virtuelle Python-Umgebung
 
-### Feedback erhalten
-Nach dem Absenden der Antwort:
-1. Das System bewertet Ihre Antwort mit Hilfe einer LLM
-2. Sie erhalten eine Punktzahl (0-10) und detailliertes Feedback
-3. Die erwartete Antwort wird angezeigt
-4. Sie können zur Themenauswahl zurückkehren, um weitere Fragen zu beantworten
+### Ablauf
 
-## Architektur und Funktionsweise
-
-### Hauptkomponenten
-- `run_app.py`: Haupteinstiegspunkt, der die Anwendung startet und konfiguriert
-- `webui.py`: Implementiert die Gradio-Webui und die Quiz-Logik
-- `chat_logic_local.py`: Verarbeitet Anfragen im lokalen Modus über LM Studio
-- `chat_logic_api.py`: Verarbeitet Anfragen im API-Modus
-- `secure_proxy.py`: Implementiert einen sicheren Proxy für die API-Kommunikation
-- `_func.py`: Enthält CSS- und JavaScript-Funktionen für die Benutzeroberfläche
-
-### Dateistruktur
-```
-quiz-system/
-├── dataset/                # Enthält JSON-Dateien mit Fragen und erwarteten Antworten
-├── modules/                # Enthält die Hauptmodule der Anwendung
-│   ├── _func.py            # CSS und JavaScript für die UI
-│   ├── dataset.py          # Datensatz Klasse
-│   ├── thema.py            # Thema Klasse
-│   ├── history.py          # Konversationsverlauf Klasse (veraltet)
-│   ├── chat_logic_api.py   # API-Modus Logik
-│   ├── chat_logic_local.py # Lokaler Modus Logik
-│   ├── secure_proxy.py     # Sicherer Proxy für API-Kommunikation
-│   └── webui.py            # Hauptwebui
-├── venv/                   # Virtuelle Python-Umgebung (wird bei Installation erstellt)
-├── installer.bat           # Installationsskript
-├── requirements.txt        # Abhängigkeiten
-├── run.vbs                 # Startskript
-└── run_app.py              # Hauptanwendungsstarter
-```
-
-### Funktionsweise
-1. **Initialisierung**: `run_app.py` startet die Anwendung und fragt nach dem gewünschten Modus
-2. **Proxy (optional)**: Bei Verwendung des API-Modus kann ein sicherer Proxy gestartet werden
-3. **Webui**: `webui.py` erstellt die Benutzeroberfläche mit Gradio
-4. **Themenauswahl**: Die verfügbaren Themen werden aus dem Dataset-Verzeichnis geladen
-5. **Fragestellung**: Nach Auswahl eines Themas wird eine Frage aus der entsprechenden JSON-Datei geladen
-6. **Antwortbewertung**: Die Benutzerantwort wird an das LLM gesendet, das eine Bewertung und Feedback zurückgibt
-7. **Ergebnisanzeige**: Die Bewertung, das Feedback und die erwartete Antwort werden angezeigt
+1. Nach dem Start wird eine Liste verfügbarer Themen und Unterthemen angezeigt
+2. Nach Auswahl eines Themas wird eine Frage präsentiert
+3. Die eingegebene Antwort wird an das Sprachmodell gesendet
+4. Das Modell bewertet die Antwort und generiert Feedback
+5. Das Ergebnis wird mit Punktzahl und Begründung angezeigt
 
 ## Konfiguration
 
-### Hinzufügen neuer Fragen
-Neue Fragen können als JSON-Dateien im `dataset/`-Verzeichnis hinzugefügt werden:
+### Datensatzformat
 
-1. Erstellen Sie eine neue JSON-Datei mit dem Namen des Themas (z.B. `Thema1.json`)
-2. Für Unterthemen verwenden Sie das Format `Thema - Unterthema.json`
-3. Die JSON-Datei sollte folgendes Format haben:
+Die Fragen werden in JSON-Dateien im Verzeichnis `dataset/` gespeichert. Das Format ist wie folgt:
+
 ```json
 [
   {
     "type": "question",
-    "content": "Hier steht die Frage?",
-    "expected_answer": "Hier steht die erwartete Antwort."
+    "content": "Wie funktioniert ein DFA?",
+    "expected_answer": "Ein DFA (Deterministic Finite Automaton) ist..."
   }
 ]
 ```
 
-### API-Konfiguration
-```bash
+### Themenkonfiguration
+
+Themen werden durch die Dateinamen der JSON-Dateien definiert:
+- Hauptthema: `Thema.json`
+- Unterthema: `Thema - Unterthema.json`
+
+### API-Einstellungen
+
+Für die Nutzung externer API-Dienste können die Parameter in `chat_logic_api.py` angepasst werden:
+
+```python
+API_KEY = "dein-api-key"
+API_ENDPOINT = "https://api.example.com/v1/chat/completions"
 ```
 
-## Fehlerbehebung
+## Erweiterungsmöglichkeiten
 
-### Häufige Probleme
+### Neue Themen hinzufügen
 
-| Problem | Lösung |
-|---------|--------|
-| Fehler beim Start | Stellen Sie sicher, dass Python korrekt installiert ist und die virtuelle Umgebung erstellt wurde |
-| Proxy-Fehler | Überprüfen Sie, ob Port 8080 verfügbar ist und nicht von anderen Anwendungen blockiert wird |
-| LM Studio-Verbindungsfehler | Stellen Sie sicher, dass LM Studio läuft und auf Port 1234 hört |
-| Fehlende Themen | Überprüfen Sie, ob das `dataset/`-Verzeichnis existiert und JSON-Dateien enthält |
+1. Eine neue JSON-Datei im Format `NeuesThema.json` oder `ExistierendesThema - NeuesUnterthema.json` erstellen
+2. Die Datei im `dataset/`-Verzeichnis speichern
+3. Die Anwendung neu starten
 
-### Logs
-Bei Problemen können Sie die Konsolenausgabe überprüfen, die wichtige Diagnoseinformationen enthält.
+### Integration weiterer Sprachmodelle
+
+Für die Integration neuer Sprachmodelle kann `chat_logic_local.py` angepasst werden:
+
+```python
+MODEL = "neues-modell-name"
+```
+
+### Benutzeroberfläche anpassen
+
+Das Erscheinungsbild kann durch Änderung der CSS-Definitionen in `_func.py` angepasst werden.
+
+## Debugging
+
+### Bekannte Probleme
+
+- Bei Verbindungsproblemen zum Sprachmodell sollte überprüft werden, ob LM Studio korrekt konfiguriert ist und auf Port 1234 läuft
+- Bei API-Verbindungsproblemen sollten API-Schlüssel und Endpunkt überprüft werden
+
+### Fehlerbehebung
+
+1. **Virtuelle Umgebung prüfen:**
+```bash
+venv_cmd.bat
+pip list
+```
+
+2. **Proxy-Server-Logs überprüfen:**
+Beim Start des Proxy-Servers werden API-Schlüssel und Endpunkt-URL angezeigt.
+
+3. **LM Studio-Verbindung testen:**
+```bash
+curl http://127.0.0.1:1234/v1/models
+```
+
+### Logging
+
+Die Anwendung gibt detaillierte Informationen zur Laufzeit in der Konsole aus, die für die Diagnose von Problemen hilfreich sein können.
+
+## Lizenz
+
+Dieses Projekt ist unter der [MIT-Lizenz](https://opensource.org/licenses/MIT) veröffentlicht.
+
+---
+
+Entwickelt für das Institut für Informatik zur Unterstützung des Selbststudiums.
