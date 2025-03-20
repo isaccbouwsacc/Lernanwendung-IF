@@ -1,6 +1,6 @@
 # Dokumentation der Projektarbeit
 
-Eine interaktive Lernanwendung für automatisierte Bewertung von Fragestellungen in der Informatik.
+Eine interaktive Lernanwendung für automatisierte Bewertung von Antworten zu bestimmeten Fragestellungen.
 
 ## Inhaltsverzeichnis
 - [Übersicht](#übersicht)
@@ -14,7 +14,7 @@ Eine interaktive Lernanwendung für automatisierte Bewertung von Fragestellungen
 
 ## Übersicht
 
-Dieses Projekt ist ein interaktives Lernwerkzeug, welches Fragen aus verschiedenen Themenbereichen stellt und im Anschluss die eingegebenen Antworten automatisch mithilfe eines Sprachmodells bewertet. Zusätzlich zu der Bewertung wird detailliertes Feedback zur Qualität der Antwort, ebenfalls vom Sprachmodell, bereitgestellt. Des Weiteren bietet dieses System eine benutzerfreundliche Weboberfläche, in der Themen und Unterthemen ausgewählt werden können.
+Dieses Projekt ist ein interaktives Lernwerkzeug, welches Fragen aus verschiedenen Themenbereichen stellt und im Anschluss die eingegebenen Antworten automatisch mithilfe eines Sprachmodells bewertet. Zusätzlich zu der Bewertung wird detailliertes Feedback zur Qualität der Antwort, ebenfalls vom Sprachmodell, bereitgestellt. Des Weiteren bietet dieses System eine benutzerfreundliche Web-Ui, in der Themen und Unterthemen ausgewählt werden können.
 
 #### Anmerkung: LLMs (Sprachmodelle) können Fehler machen!
 
@@ -28,7 +28,7 @@ Dieses Projekt ist ein interaktives Lernwerkzeug, welches Fragen aus verschieden
 - [LM Studio](https://lmstudio.ai/) für die lokale Ausführung von Sprachmodellen
 
 ### Python-Abhängigkeiten
-- [Gradio](https://gradio.app/) - für die Weboberfläche
+- [Gradio](https://gradio.app/) - für die Web-Ui
 - [OpenAI API](https://github.com/openai/openai-python) - für die Kommunikation mit dem Sprachmodell
 - [Flask](https://flask.palletsprojects.com/) - für den Proxy-Server
 - [pyngrok](https://pyngrok.readthedocs.io/) - für den externen Zugriff
@@ -76,17 +76,19 @@ python modules\webui.py [OPTIONEN]
 
 ### Proxy-Server
 
-Sorgt für eine gesicherte Verbidung zwischen Host und Client, kann unter `run_proxy.vbs` ausgeührt werden.
+Secure Proxy sorgt für eine gesicherte Verbindung zwischen Host und Client und kann mit ngrok eine öffentliche URL bereitstellen, die den Zugriff von außerhalb des lokalen Netzwerks ermöglicht.
+
 ```
 run_proxy.vbs
 ```
-Dieses Skript startet einen Proxy-Server, der durch ngrok einer öffentliche URL zugewiesen bekommt und so nicht nur auf lokaler Ebene benutzt werden kann.
+
+#### Anmerkung: Der ngrok-Authtoken im Proxy-Code sollte vor der Verwendung im produktiven Umfeld durch Ihren eigenen ersetzt werden.
 
 ## Funktionsweise
 
 ### Komponenten
 
-- `webui.py`: Hauptmodul für die Weboberfläche und Anwendungslogik
+- `webui.py`: Hauptmodul für die Web-Ui und Anwendungslogik
 - `chat_logic_api.py` / `chat_logic_local.py`: Verantwortlich für die Kommunikation mit dem Sprachmodell
 - `secure_proxy.py`: Stellt eine gesicherte Verbindung her
 - `history.py`: Verwaltet den Gesprächsverlauf (veraltet)
@@ -102,9 +104,9 @@ Lernanwendung-IF/
  │   ├── _func.py            # CSS und JavaScript für die UI
  │   ├── dataset.py          # Datensatz Klasse
  │   ├── thema.py            # Thema Klasse
- │   ├── history.py          # Konversationsverlauf Klasse (veraltet)
- │   ├── chat_logic_api.py   # API-Modus Logik
- │   ├── chat_logic_local.py # Lokaler Modus Logik
+ │   ├── history.py          # Konversationsverlauf Klasse (veraltet/nicht verwendet)
+ │   ├── chat_logic_api.py   # API-Modus Antwort Logik
+ │   ├── chat_logic_local.py # Lokaler Modus Antwort Logik
  │   ├── secure_proxy.py     # Sicherer Proxy für API-Kommunikation
  │   └── webui.py            # Hauptwebui
  ├── installer.bat           # Installationsskript
@@ -120,9 +122,10 @@ Lernanwendung-IF/
 
 1. Nach dem Start wird eine Liste verfügbarer Themen und Unterthemen angezeigt
 2. Nach Auswahl eines Themas wird eine Frage präsentiert
-3. Die eingegebene Antwort wird an das Sprachmodell gesendet
-4. Das Modell bewertet die Antwort und generiert Feedback
-5. Das Ergebnis wird mit Punktzahl und Begründung angezeigt
+3. Der Benutzer gibt seine Antwort in das Textfeld ein
+4. Nach dem Absenden wird die Antwort an das Sprachmodell gesendet
+5. Das Modell bewertet die Antwort anhand des vorgegebenen Erwartungshorizonts
+6. Das Ergebnis wird mit Punktzahl (0-10) und detaillierter Begründung angezeigt
 
 ## Konfiguration
 
@@ -135,16 +138,26 @@ Die Fragen werden in JSON-Dateien im Verzeichnis `dataset/` gespeichert. Das For
   {
     "type": "question",
     "content": "{Frage}",
-    "expected_answer": "{Antwort}"
+    "expected_answer": "{Erwartete Antwort/Erwartungshorizont}"
   }
 ]
 ```
 
 ### Themenkonfiguration
 
-Themen werden durch die Dateinamen der JSON-Dateien definiert:
+Themen und Unterthemen werden durch die Dateinamen der JSON-Dateien definiert:
 - Hauptthema: `Thema.json`
 - Unterthema: `Thema - Unterthema.json`
+
+Die Anwendung scannt das `dataset/`-Verzeichnis beim Start und baut dynamisch eine Themenstruktur auf.
+
+### Proxy-Konfiguration
+
+Der Secure Proxy verwendet ngrok für den externen Zugriff. Im Produktiveinsatz sollten Sie den vorhandenen ngrok-Authtoken in `secure_proxy.py` durch Ihren eigenen ersetzen:
+
+```python
+ngrok_auth_token = "IHR_AUTHTOKEN_HIER"
+```
 
 ## Erweiterungsmöglichkeiten
 
@@ -156,11 +169,7 @@ Themen werden durch die Dateinamen der JSON-Dateien definiert:
 
 ### Integration weiterer Sprachmodelle
 
-Für die Integration neuer Sprachmodelle kann `chat_logic_local.py` oder auch in LM Studio angepasst werden:
-
-```python
-MODEL = "neues-modell-name"
-```
+Für die Integration neuer Sprachmodelle kann `chat_logic_local.py` angepasst oder das Modell direkt in LM Studio konfiguriert werden.
 
 ### Benutzeroberfläche anpassen
 
@@ -172,6 +181,7 @@ Das Erscheinungsbild der Applikation kann durch Änderung der CSS-Definitionen i
 
 - Bei Verbindungsproblemen zum Sprachmodell sollte überprüft werden, ob LM Studio korrekt konfiguriert ist und auf Port 1234 läuft
 - Bei API-Verbindungsproblemen sollten eingegebene API-Schlüssel und API-Endpunkt überprüft werden
+- Wenn der ngrok-Tunnel nicht startet, könnte der Authtoken abgelaufen sein oder das Limit erreicht haben
 
 ### Fehlerbehebung
 
