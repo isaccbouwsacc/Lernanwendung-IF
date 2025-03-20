@@ -22,7 +22,7 @@ Dieses Projekt ist ein interaktives Lernwerkzeug, welches Fragen aus verschieden
 
 - [Python 3.8+](https://www.python.org/downloads/) oder höher
 - [Git](https://git-scm.com/downloads) (für das Klonen des Repositories)
-- Windows-Betriebssystem (für die Batch- und VBS-Skripte)
+- Windows-Betriebssystem (für die Batch- und VBS-Skripte + Anwendung ist nicht für Linux gebaut)
 - Mindestens 4GB RAM / VRAM für die lokale Ausführung (Modelabhängig)
 - Internetverbindung für die API-Nutzung
 - [LM Studio](https://lmstudio.ai/) für die lokale Ausführung von Sprachmodellen
