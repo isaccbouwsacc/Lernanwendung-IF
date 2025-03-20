@@ -1,7 +1,7 @@
 [
     {
         "type": "question",
-        "content": "Wie lautet das Tupel einer Grammatik?",
-        "expected_answer": "Eine Grammatik verfügt über ein 6er Tupel. Dieses lautet G = (N, T, P, S). N steht für die Menge der Nichtterminalsymbole, T steht für die Menge der Terminalsymbole, P steht für die Produktionsregeln, S steht für das einzige Start-Nichtterminal, von dem alle anderen Terminalen und Nichtterminalen abgeleitet werden können. Die Reihenfolge spielt grundsätzlich keine Rolle."
+        "content": "Wie lautet das Tupel einer Grammatik und was bedeuten die einzelnen Elemente?",
+        "expected_answer": "Eine Grammatik verfügt über ein 4er Tupel. Dieses lautet G = (N, T, P, S). N steht für die Menge der Nichtterminalsymbole, T steht für die Menge der Terminalsymbole, P steht für die Produktionsregeln, S steht für das einzige Start-Nichtterminal, von dem alle anderen Terminalen und Nichtterminalen abgeleitet werden können. Die Reihenfolge spielt grundsätzlich keine Rolle."
     }
 ]
