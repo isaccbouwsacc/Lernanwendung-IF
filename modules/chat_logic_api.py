@@ -14,7 +14,7 @@ def respond(history):
     out:
         history - Aktualisierte Nachrichtenliste mit der Antwort des API-Dienstes
     """
-    # Vorbereitung der Anfrage-Nutzlast
+    # Vorbereitung der Anfrage mit Parametern für die Antworterstellung
     data = {
         "messages": history,
         "max_tokens": -1,
