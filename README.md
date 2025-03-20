@@ -76,7 +76,7 @@ python modules\webui.py [OPTIONEN]
 
 ### Proxy-Server
 
-Für eine gesicherte Verbidung zwischen Host und Client kann `run_proxy.vbs` ausgeührt werden.
+Sorgt für eine gesicherte Verbidung zwischen Host und Client, kann unter `run_proxy.vbs` ausgeührt werden.
 ```
 run_proxy.vbs
 ```
