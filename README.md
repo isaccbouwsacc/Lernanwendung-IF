@@ -80,7 +80,7 @@ python modules\webui.py [OPTIONEN]
 Im lokalen Modus kommuniziert die Anwendung direkt mit einem lokal ausgeführten Sprachmodell, wie z.B. über [LM Studio](https://lmstudio.ai/). Hierfür muss LM Studio auf dem lokalen Rechner gestartet sein und auf Port 1234 hören.
 
 #### API-Modus
-Der API-Modus stellt **keine** eigenen Sprachmodelle bereit, sondern ermöglicht lediglich die Kommunikation mit einem externen Netzwerk. Kann also als Host/Client system verwendet werden, ähnlich wie: ´share=True´ von gradio.
+Der API-Modus stellt **keine** eigenen Sprachmodelle bereit, sondern ermöglicht lediglich die Kommunikation mit einem externen Netzwerk. Kann also als Host/Client system verwendet werden, ähnlich wie: `share=True` von gradio.
 
 ### Proxy-Server
 
