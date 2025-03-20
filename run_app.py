@@ -7,7 +7,6 @@ import requests
 
 
 def start_proxy():
-    """Start the secure proxy and return its API key and endpoint"""
     print("Starting secure proxy server...")
 
     # Start the proxy as a subprocess
@@ -75,9 +74,6 @@ def main():
     # Ask if user wants to use API mode
     use_api = input("Do you want to use API mode? (y/n) ").lower().startswith('y')
 
-    # Ask if user wants to use dark mode
-    use_dark_mode = input("Do you want to use dark mode? (y/n) ").lower().startswith('y')
-
     # Ask if user wants to enable sharing
     use_share = input("Do you want to enable sharing (public URL)? (y/n) ").lower().startswith('y')
 
@@ -129,11 +125,6 @@ def main():
 
     if not use_api:
         print("Running in local mode without API.")
-
-    # Add dark mode flag if selected
-    if use_dark_mode:
-        launch_args.append('--dark-mode')
-        print("Dark mode enabled.")
 
     # Add share flag if selected
     if use_share:
