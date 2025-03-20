@@ -1,6 +1,6 @@
 import requests
 
-# Definiere globale Variablen, die von außen gesetzt werden können
+# globale Variablen, die von außen gesetzt werden können
 API_KEY = ""
 API_ENDPOINT = ""  # Standardwert
 
