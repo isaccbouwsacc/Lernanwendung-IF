@@ -1,7 +1,7 @@
 [
     {
         "type": "question",
-        "content": "Was versteht man unter einer formalen Sprache und durch was werden Sprachen definiert im Kontext der Automatentheorie?",
+        "content": "Was versteht man unter einer formalen Sprache und durch was werden Sprachen definiert im Kontext der Automatentheorie? (mit Beispiel)",
         "expected_answer": "Unter einer formalen Sprache versteht man eine Menge von Zeichenketten (Wörtern), die nach bestimmten Regeln aus einem definierten Alphabet gebildet werden. Sie werden oft durch Grammatiken oder Automaten definiert (z.B.:  L={a^n b^2n∣n>0}."
     }
 ]
