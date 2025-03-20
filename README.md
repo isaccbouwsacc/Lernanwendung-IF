@@ -11,7 +11,6 @@ Eine interaktive Lernanwendung für automatisierte Bewertung von Fragestellungen
 - [Konfiguration](#konfiguration)
 - [Erweiterungsmöglichkeiten](#erweiterungsmöglichkeiten)
 - [Debugging](#debugging)
-- [Lizenz](#lizenz)
 
 ## Übersicht
 
@@ -23,7 +22,7 @@ Dieses Projekt ist ein interaktives Lernwerkzeug, welches Fragen aus verschieden
 
 - [Python 3.8+](https://www.python.org/downloads/) oder höher
 - Windows-Betriebssystem (für die Batch- und VBS-Skripte)
-- Mindestens 4GB RAM für die lokale Ausführung
+- Mindestens 4GB RAM (Modelabhängig) für die lokale Ausführung
 - Internetverbindung für die API-Nutzung
 - [LM Studio](https://lmstudio.ai/) für die lokale Ausführung von Sprachmodellen
 
@@ -58,7 +57,7 @@ Die Anwendung kann auf zwei Arten gestartet werden:
 ```
 run.vbs
 ```
-Dieses Skript startet die Anwendung mit Standardeinstellungen.
+Dieses Skript startet die Anwendung und erfragt nach den Startoptionen (y/n).
 
 2. **Manueller Start mit mehr Optionen:**
 ```
@@ -68,7 +67,7 @@ python modules\webui.py [OPTIONEN]
 
 ### Verfügbare Startoptionen
 
-- `--api-key [KEY]`: Nutzt die API-Schnittstelle mit dem angegebenen Schlüssel
+- `--api-key [KEY]`: Nutzt den API-Endpunkt mit dem angegebenen Schlüssel
 - `--api-endpoint [URL]`: Definiert den API-Endpunkt
 - `--share`: Aktiviert die öffentliche Freigabe der Anwendung über eine temporäre URL
 - `--username [NAME]`: Legt einen Benutzernamen für die Authentifizierung fest
@@ -93,10 +92,25 @@ run_proxy.vbs
 - `_func.py`: Enthält CSS-Funktionen für die Benutzeroberfläche
 
 ### Datenstruktur
-
-- `modules/`: Enthält alle Python-Module
-- `dataset/`: Beinhaltet die Fragenkataloge im JSON-Format
-- `.venv/`: Virtuelle Python-Umgebung
+Lernanwendung-IF/
+ ├── .venv/                  # Virtuelle Python-Umgebung (wird bei Installation erstellt)
+ ├── dataset/                # Enthält JSON-Dateien mit Fragen und erwarteten Antworten
+ ├── modules/                # Enthält die Hauptmodule der Anwendung
+ │   ├── _func.py            # CSS und JavaScript für die UI
+ │   ├── dataset.py          # Datensatz Klasse
+ │   ├── thema.py            # Thema Klasse
+ │   ├── history.py          # Konversationsverlauf Klasse (veraltet)
+ │   ├── chat_logic_api.py   # API-Modus Logik
+ │   ├── chat_logic_local.py # Lokaler Modus Logik
+ │   ├── secure_proxy.py     # Sicherer Proxy für API-Kommunikation
+ │   └── webui.py            # Hauptwebui
+ ├── installer.bat           # Installationsskript
+ ├── requirements.txt        # Abhängigkeiten
+ ├── run.vbs                 # Startskript
+ ├── run_app.py              # Hauptanwendungsstarter
+ ├── run_proxy.vbs           # Proxystarter (falls nicht die ganze Anwendung ausgeführt werden kann)
+ └── venv_cmd.bat            # Shortcut für cmd in der virtuellen Python-Umgebung
+ ```
 
 ### Ablauf
 
@@ -116,8 +130,8 @@ Die Fragen werden in JSON-Dateien im Verzeichnis `dataset/` gespeichert. Das For
 [
   {
     "type": "question",
-    "content": "Wie funktioniert ein DFA?",
-    "expected_answer": "Ein DFA (Deterministic Finite Automaton) ist..."
+    "content": "{Frage}",
+    "expected_answer": "{Antwort}"
   }
 ]
 ```
@@ -183,11 +197,3 @@ curl http://127.0.0.1:1234/v1/models
 ### Logging
 
 Die Anwendung gibt detaillierte Informationen zur Laufzeit in der Konsole aus, die für die Diagnose von Problemen hilfreich sein können.
-
-## Lizenz
-
-Dieses Projekt ist unter der [MIT-Lizenz](https://opensource.org/licenses/MIT) veröffentlicht.
-
----
-
-Entwickelt für das Institut für Informatik zur Unterstützung des Selbststudiums.
