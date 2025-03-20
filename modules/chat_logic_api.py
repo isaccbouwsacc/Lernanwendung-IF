@@ -1,28 +1,37 @@
 import requests
 
-# Define global variables that can be set from outside
+# Definiere globale Variablen, die von außen gesetzt werden können
 API_KEY = ""
-API_ENDPOINT = ""  # Default value
+API_ENDPOINT = ""  # Standardwert
+
 
 def respond(history):
-    # Prepare the request payload
+    """
+    Sendet eine Anfrage an einen externen API-Endpunkt und gibt die Antwort zurück
+
+    in:
+        history - Liste von Nachrichten im Format [{"role": "...", "content": "..."}]
+    out:
+        history - Aktualisierte Nachrichtenliste mit der Antwort des API-Dienstes
+    """
+    # Vorbereitung der Anfrage-Nutzlast
     data = {
         "messages": history,
         "max_tokens": -1,
-        "temperature": 0.4,  # More deterministic
+        "temperature": 0.4,  # Deterministischer druch kleineren Wert
         "top_k": 40,
         "repeat_penalty": 1.1,
         "top_p": 0.95,
         "min_p": 0.05,
     }
 
-    # Include the API key in the headers
+    # API-Schlüssel in den Headers einfügen
     headers = {
         "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json"
     }
 
-    # Send the request to the remote server
+    # Anfrage an den Remote-Server senden
     response = requests.post(API_ENDPOINT, json=data, headers=headers)
 
     if response.status_code == 200:
